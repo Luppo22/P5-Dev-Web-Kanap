@@ -29,18 +29,12 @@ fetch(`http://127.0.0.1:3000/api/products/${monId}`, { method: 'GET' })
         let descContainer = document.querySelector("#description");
         descContainer.innerHTML = product.description;
 
-        // PLACER LES CHOIX DE COULEURS
+        // PLACER LES OPTIONS DE CHOIX DE COULEURS
         let colorsContainer = document.querySelector("#colors");
-        // On parcours le tableau 'colors' de l'élément 'product' (élément individuel du tableau 'products')
-        // et on défini chaque élément de ce tableau 'colors' en tant que variable 'color'
         for (let color of product.colors) {
-            //on crée dans le html une constante 'option'
             const option = document.createElement('option');
-            //on assigne à cette option une valeur
             option.value = color;
-            //on inscrit cette option dans le html
             option.innerHTML = color;
-            //on ajoute cette option en tant que enfant dans 'colorsContainer'
             colorsContainer.appendChild(option);
         }
     })
@@ -69,8 +63,9 @@ const buttonAddToCart = document.querySelector("#addToCart");
 buttonAddToCart.addEventListener('click', function () {
     const colorInput = document.querySelector("#colors");
     const quantityInput = document.querySelector("#quantity");
+    let productsUsers = JSON.parse(localStorage.getItem('prodStorage'));
+
     if (localStorage.getItem('prodStorage') !== null) {
-        let productsUsers = JSON.parse(localStorage.getItem('prodStorage'));
         productsUsers.push({ 'id': monId, 'color': colorInput.value, 'quantity': quantityInput.value });
         localStorage.setItem('prodStorage', JSON.stringify(productsUsers));
     } else {
