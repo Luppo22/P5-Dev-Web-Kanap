@@ -211,27 +211,27 @@ function validateEmail(inputEmail) {
 };
 
 // Ecoute de la modification du prénom avec l'id 'firstName'
-formContainer.firstName.addEventListener('change', function () {
+formContainer.firstName.addEventListener('focusout', function () {
         validateFirstName(this);
 });
 
 // Ecoute de la modification du nom
-formContainer.lastName.addEventListener('change', function () {
+formContainer.lastName.addEventListener('focusout', function () {
     validateLastName(this);
 });
 
 // Ecoute de la modification de l'adresse
-formContainer.address.addEventListener('change', function () {
+formContainer.address.addEventListener('focusout', function () {
     validateAddress(this);
 });
 
 // Ecoute de la modification de la ville
-formContainer.city.addEventListener('change', function () {
+formContainer.city.addEventListener('focusout', function () {
     validateCity(this);
 });
 
 // Ecoute de la modification du mail
-formContainer.email.addEventListener('change', function () {
+formContainer.email.addEventListener('focusout', function () {
     validateEmail(this);
 });
 
