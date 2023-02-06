@@ -15,5 +15,5 @@ server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.
 
 
-To view htis repo on Luppo22 Github page :
+To view this repo on Luppo22 Github page :
 https://luppo22.github.io/P5-Dev-Web-Kanap/front/html/index.html
