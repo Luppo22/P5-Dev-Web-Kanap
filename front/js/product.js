@@ -39,6 +39,8 @@ fetch(`http://127.0.0.1:3000/api/products/${monId}`, { method: 'GET' })
         }
     })
 
+
+
 /* ÉCOUTER LES CHOIX UTILISATEUR À ENVOYER AU LOCALSTORAGE
     On déclare une variable pour cibler le bouton 'Ajouter au panier'.
     On ajoute un écouteur d'évènement à ce bouton sur le clic qui appelle une fonction sans paramètres,
@@ -64,11 +66,22 @@ buttonAddToCart.addEventListener('click', function () {
     const colorInput = document.querySelector("#colors");
     const quantityInput = document.querySelector("#quantity");
     let productsUsers = JSON.parse(localStorage.getItem('prodStorage'));
+    // Ecoute de la modification
+    //colorInput.addEventListener('change', function () {   
+    //   console.log(colorInput.value);
+    //});
 
-    if (localStorage.getItem('prodStorage') !== null) {
-        productsUsers.push({ 'id': monId, 'color': colorInput.value, 'quantity': quantityInput.value });
-        localStorage.setItem('prodStorage', JSON.stringify(productsUsers));
+    // Si la quantité est différente de 0, et que la couleur est défini
+    if (parseInt(quantityInput.value) > 0 && parseInt(quantityInput.value) <= 100 && colorInput.value) {
+        //alert("ok : la quantité est différente de 0, et la couleur est définie");
+        
+        if (localStorage.getItem('prodStorage') !== null) {
+            productsUsers.push({ 'id': monId, 'color': colorInput.value, 'quantity': quantityInput.value });
+            localStorage.setItem('prodStorage', JSON.stringify(productsUsers));
+        } else {
+            localStorage.setItem('prodStorage', JSON.stringify([{ 'id': monId, 'color': colorInput.value, 'quantity': quantityInput.value }]));
+        }
     } else {
-        localStorage.setItem('prodStorage', JSON.stringify([{ 'id': monId, 'color': colorInput.value, 'quantity': quantityInput.value }]));
+        alert("une condition n'est pas remplie");
     }
 })
